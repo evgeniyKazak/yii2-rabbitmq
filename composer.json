@@ -29,10 +29,10 @@
   },
   "autoload": {
     "psr-4": {
-      "ekazak\\rabbitmq\\": ""
+      "mikemadisonweb\\rabbitmq\\": ""
     }
   },
   "extra": {
-    "bootstrap": "ekazak\\rabbitmq\\DependencyInjection"
+    "bootstrap": "mikemadisonweb\\rabbitmq\\DependencyInjection"
   }
 }
