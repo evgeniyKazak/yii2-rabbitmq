@@ -65,7 +65,7 @@ class Routing
      * @return bool
      * @throws RuntimeException
      */
-    public function declareAll() : bool
+    public function declareAll(): bool
     {
         if (!$this->isDeclared) {
             foreach (array_keys($this->exchanges) as $name) {
@@ -89,7 +89,7 @@ class Routing
      */
     public function declareQueue(string $queueName)
     {
-        if(!isset($this->queues[$queueName])) {
+        if (!isset($this->queues[$queueName])) {
             throw new RuntimeException("Queue `{$queueName}` is not configured.");
         }
 
@@ -186,7 +186,7 @@ class Routing
      */
     public function declareExchange(string $exchangeName)
     {
-        if(!isset($this->exchanges[$exchangeName])) {
+        if (!isset($this->exchanges[$exchangeName])) {
             throw new RuntimeException("Exchange `{$exchangeName}` is not configured.");
         }
         $exchange = $this->exchanges[$exchangeName];
@@ -238,12 +238,12 @@ class Routing
      * @param string $queueName
      * @throws RuntimeException
      */
-    public function deleteQueue(string $queueName)
+    public function deleteQueue(string $queueName, bool $if_unused = false, bool $if_empty = false)
     {
         if (!isset($this->queues[$queueName])) {
             throw new RuntimeException("Queue {$queueName} is not configured. Delete is aborted.");
         }
-        $this->getChannel()->queue_delete($queueName);
+        $this->getChannel()->queue_delete($queueName, $if_unused = false, $if_empty);
     }
 
     /**
@@ -264,7 +264,7 @@ class Routing
      * @param string $exchangeName
      * @return bool
      */
-    public function isExchangeExists(string $exchangeName) : bool
+    public function isExchangeExists(string $exchangeName): bool
     {
         try {
             $this->getChannel()->exchange_declare($exchangeName, null, true);
@@ -280,7 +280,7 @@ class Routing
      * @param string $queueName
      * @return bool
      */
-    public function isQueueExists(string $queueName) : bool
+    public function isQueueExists(string $queueName): bool
     {
         try {
             $this->getChannel()->queue_declare($queueName, true);
@@ -295,11 +295,11 @@ class Routing
      * @param array $unnamedArr
      * @return array
      */
-    private function arrangeByName(array $unnamedArr) : array
+    private function arrangeByName(array $unnamedArr): array
     {
         $namedArr = [];
         foreach ($unnamedArr as $elem) {
-            if('' === $elem['name']) {
+            if ('' === $elem['name']) {
                 $namedArr[$elem['name']][] = $elem;
             } else {
                 $namedArr[$elem['name']] = $elem;
