@@ -16,7 +16,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 
 Either run
 ```
-php composer.phar require mikemadisonweb/yii2-rabbitmq
+php composer.phar require ekazak/yii2-rabbitmq
 ```
 or add
 ```json
