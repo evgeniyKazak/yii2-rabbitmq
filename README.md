@@ -20,7 +20,7 @@ php composer.phar require mikemadisonweb/yii2-rabbitmq
 ```
 or add
 ```json
-"mikemadisonweb/yii2-rabbitmq": "^2.2.0"
+"ekazak/yii2-rabbitmq": "^2.2.0"
 ```
 to the require section of your `composer.json` file.
 
@@ -34,7 +34,7 @@ return [
     'components'    => [
         // ...
         'rabbitmq' => [
-            'class' => \mikemadisonweb\rabbitmq\Configuration::class,
+            'class' => \ekazak\rabbitmq\Configuration::class,
             'connections' => [
                 [
                     // You can pass these parameters as a single `url` option: https://www.rabbitmq.com/uri-spec.html
